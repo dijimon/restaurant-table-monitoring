@@ -1,0 +1,32 @@
+.table {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  margin: 5px;
+}
+
+.table-type {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.table.warning {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { box-shadow: 0 0 5px red; }
+  50% { box-shadow: 0 0 10px red; }
+  100% { box-shadow: 0 0 5px red; }
+}
