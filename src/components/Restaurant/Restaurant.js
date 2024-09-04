@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Table from './Table';
 import './Restaurant.css';
+import TableList from '../TableList/TableList';
+import { tableTypes } from '../../constants';
 
 const generateRandomTable = (id) => {
-  const maxGuests = Math.floor(Math.random() * 10);
+  const tableType = ['Dining Table', 'Booth Table', 'Outdoor Table', 'Private Dining Table'][Math.floor(Math.random() * 4)];
+  const maxGuests = tableTypes[tableType].maxGuests;
   return {
     id,
-    type: ['Dining Table', 'Booth Table', 'Outdoor Table', 'Private Dining Table'][Math.floor(Math.random() * 4)],
+    type: tableType,
     name: `Table ${id}`,
     warning: Math.random() < 0.2,
     guests: Math.floor(Math.random() * maxGuests),
@@ -15,7 +17,7 @@ const generateRandomTable = (id) => {
 };
 
 const Restaurant = () => {
-  const [tables, setTables] = useState(Array.from({ length: 100 }, (_, id) => generateRandomTable(id)));
+  const [tables, setTables] = useState(Array.from({ length: 1000 }, (_, id) => generateRandomTable(id)));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,9 +35,7 @@ const Restaurant = () => {
 
   return (
     <div className="restaurant">
-      {tables.map((table) => (
-        <Table key={table.id} table={table} />
-      ))}
+      <TableList tables={tables} />
     </div>
   );
 };
