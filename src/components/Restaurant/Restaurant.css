@@ -1,6 +1,16 @@
 .restaurant {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.restaurant--loading {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.loading-spinner {
+  font-size: 1.2rem;
+  color: #666;
+  /* Добавьте здесь анимацию спиннера при желании */
 }
